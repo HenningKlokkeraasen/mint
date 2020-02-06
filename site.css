@@ -1,0 +1,117 @@
+
+/*
+    The 2020 Project
+    ---------------------------------------------------------------------------------------------
+*/
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+/*
+    Color Palette
+    Mint / Brown
+    https://www.color-hex.com/color-palette/53933
+    ---------------------------------------------------------------------------------------------
+*/
+
+body {
+    background-color: rgb(66,47,39);
+    color: white;
+}
+
+header,
+footer {
+    background-color: rgb(59,191,154);
+    color: rgb(66,47,39);
+}
+
+nav {
+    background-color: rgb(119,204,180);
+    color: rgb(66,47,39);
+}
+
+main {
+    background-color: rgb(133,105,93);
+}
+
+aside {
+    background-color: rgb(86,62,52);
+}
+
+
+
+/*
+    Site Grid Layout
+    https://alligator.io/css/css-grid-holy-grail-layout/
+    ---------------------------------------------------------------------------------------------
+*/
+
+body {
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "nav content side"
+        "footer footer footer";
+    grid-template-columns: 300px 1fr 300px;
+    grid-template-rows: auto 1fr auto;
+    grid-gap: 1px;
+    height: 98vh;
+}
+
+header {
+    grid-area: header;
+}
+
+nav {
+    grid-area: nav;
+    /*margin-left: 0.5rem;*/
+}
+
+main {
+    grid-area: content;
+}
+
+aside {
+    grid-area: side;
+    /*margin-right: 0.5rem;*/
+}
+
+footer {
+    grid-area: footer;
+}
+
+
+
+/*
+    Grid Layout Inside Header / Footer
+    ---------------------------------------------------------------------------------------------
+*/
+
+header,
+footer {
+    display: grid;
+    grid-template-areas:
+        "left middle right";
+    grid-template-columns: 300px 1fr 300px;
+}
+
+
+
+/*
+    Various
+    ---------------------------------------------------------------------------------------------
+*/
+
+header,
+nav,
+aside,
+footer {
+    padding: 3px;
+}
+
+main {
+    padding: 3px 3px 3px 30px;
+}
