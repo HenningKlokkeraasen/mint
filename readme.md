@@ -11,7 +11,10 @@
 ..* CSS Formatter extension
 * IIS
 
-*Note to self*
+*Run*
+PS > .\build.ps1
+
+*Note to self - how to setup with NPM, Babel*
 * npm init
 * npm install --save-dev @babel/core @babel/cli
 * npm install --save-dev @babel/plugin-proposal-pipeline-operator
