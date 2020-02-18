@@ -2,13 +2,13 @@
 *Project setup*
 * NPM
 * Babel
-* Babel pipeline operator, minimal proposal https://babeljs.io/docs/en/babel-plugin-proposal-pipeline-operator
+* * Pipeline operator, minimal proposal https://babeljs.io/docs/en/babel-plugin-proposal-pipeline-operator
 * JSON files as database
 
 *Dev env*
 * VS Code
-..* Powershell extensions
-..* CSS Formatter extension
+*  * Powershell extensions
+*  * CSS Formatter extension
 * IIS
 
 *Run*
