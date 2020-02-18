@@ -1,0 +1,82 @@
+{
+    "data": [
+        {
+            "id": "films",
+            "title": "Films",
+            "classNames": "lime-text"
+        },
+        {
+            "id": "directors",
+            "title": "Directors",
+            "classNames": "magenta-text"
+        },
+        {
+            "title": "Producers",
+            "classNames": "magenta-text"
+        },
+        {
+            "title": "Writers",
+            "classNames": "magenta-text"
+        },
+        {
+            "title": "Actors",
+            "classNames": "magenta-text"
+        },
+        {
+            "title": "Film Series",
+            "classNames": "yellow-text"
+        },
+        {
+            "title": "Countries",
+            "classNames": "cyan-text"
+        },
+        {
+            "title": "Regions",
+            "classNames": "cyan-text"
+        },
+        {
+            "title": "Genres",
+            "classNames": "red-text"
+        },
+        {
+            "title": "Sub-Genres",
+            "classNames": "orange-text"
+        },
+        {
+            "title": "Movements",
+            "classNames": "fuchsia-text"
+        },
+        {
+            "title": "Styles",
+            "classNames": "sky-blue-text"
+        },
+        {
+            "title": "Formats",
+            "classNames": "peach-text"
+        },
+        {
+            "title": "Awards",
+            "classNames": "lavender-text"
+        },
+        {
+            "title": "Eras",
+            "classNames": "light-yellow-text"
+        },
+        {
+            "title": "Years",
+            "classNames": "light-yellow-text"
+        },
+        {
+            "title": "Themes",
+            "classNames": "pink-text"
+        },
+        {
+            "title": "Concepts",
+            "classNames": "pink-text"
+        },
+        {
+            "title": "Popularity",
+            "classNames": "chartreuse1-text"
+        }
+    ]
+}

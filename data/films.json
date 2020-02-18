@@ -1,0 +1,16 @@
+{
+    "id": "films",
+    "data": [
+        { "id": 1, "title": "2001: A Space Odyssey", "directors": [9] },
+        { "id": 2, "title": "One Flew Over the Cuckoo's Nest" },
+        { "id": 3, "title": "The Godfather", "directors": [17] },
+        { "id": 4, "title": "Joker" },
+        { "id": 5, "title": "Parasite" },
+        { "id": 6, "title": "1917" },
+        { "id": 7, "title": "Om det oändliga", "directors": [12] },
+        { "id": 8, "title": "Once Upon a Time in the West" },
+        { "id": 9, "title": "Once Upon a Time in America" },
+        { "id": 10, "title": "Once Upon a Time... in Hollywood", "directors": [11] },
+        { "id": 11, "title": "Monty Python and the Holy Grail", "directors": [15, 16] }
+    ]
+}
