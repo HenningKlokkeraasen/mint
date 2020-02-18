@@ -2,7 +2,7 @@
 # Project setup
 * NPM
 * Babel
-    * Pipeline operator, minimal proposal https://babeljs.io/docs/en/babel-plugin-proposal-pipeline-operator
+    * Pipeline operator, minimal proposal https://babeljs.io/docs/en/babel-plugin-proposal-pipeline-operator https://github.com/tc39/proposal-pipeline-operator/ 
 * JSON files as database
 
 # Dev env
