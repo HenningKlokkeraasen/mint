@@ -10,15 +10,16 @@ async function buildSite() {
     buildDirectors(directors, index);
 }
 
-function renderNavigation(json) {
-    json.data
-        .map(item => (
-            {
-                "text": item.title,
-                "classNames": item.classNames
-            }))
-        |> (items => renderItems(items, 'li', 'main-nav-container'));
-}
+let renderNavigation = (json) => (
+    json.data.map(mapIndexItemToGenericListItem)
+    |> (items => renderItems(items, 'li', 'main-nav-container')))
+
+let mapIndexItemToGenericListItem = (item) => (
+    {
+        "text": item.title,
+        "classNames": item.classNames
+    })
+
 function renderDiv(data, indexData) {
     let entryInIndex = indexData.data.find(e => e.id == data.id);
     let container = document.getElementById('main-content-container');
