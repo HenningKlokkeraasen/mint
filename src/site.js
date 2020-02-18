@@ -3,11 +3,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
 });
 
 async function buildSite() {
-    let index = await loadData('data/index.json');
+    let index = await loadData('../data/index.json');
     buildIndex(index);
 
-    let films = await loadData('data/films.json');
-    let directors = await loadData('data/directors.json');
+    let films = await loadData('../data/films.json');
+    let directors = await loadData('../data/directors.json');
 
     buildFilms(films, index, directors);
     buildDirectors(directors, index);

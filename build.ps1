@@ -1,1 +1,1 @@
-./node_modules/.bin/babel src --out-dir js --no-comments
+./node_modules/.bin/babel src --out-dir www/js --no-comments

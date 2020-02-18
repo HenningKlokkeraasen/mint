@@ -11,7 +11,14 @@
     * CSS Formatter extension
 * IIS
 
-# Run
+# Structure
+* Source js in \src
+* Output js in \www\js
+* HTML, CSS in \www
+* JSON data in \data
+* NPM config, Babel config, build script on root
+
+# Build
 PS > .\build.ps1
 
 # Note to self - how to setup with NPM, Babel
