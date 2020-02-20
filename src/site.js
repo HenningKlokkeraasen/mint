@@ -5,6 +5,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
 async function buildSite() {
     let { index, films, directors } = await loadAllData();
 
+    // Register all Handlebars templates as partials
+    Handlebars.partials = Handlebars.templates;
+
     renderNavigation(index);
     buildFilms(films, index, directors);
     buildDirectors(directors, index);
@@ -12,7 +15,7 @@ async function buildSite() {
 
 let renderNavigation = (json) => (
     json.data.map(mapIndexItemToGenericListItem)
-    |> (items => renderItems(items, 'li', 'main-nav-container')))
+    |> (items => DomRenderer.renderUl(items, 'main-nav-container')))
 
 let mapIndexItemToGenericListItem = (item) => (
     {
@@ -20,49 +23,66 @@ let mapIndexItemToGenericListItem = (item) => (
         "classNames": item.classNames
     })
 
-function renderDiv(data, indexData) {
-    let entryInIndex = indexData.data.find(e => e.id == data.id);
-    let container = document.getElementById('main-content-container');
-    let div = createElement('div', '', '') |> container.appendChild;
-    createElement('p', entryInIndex.title, '') |> div.appendChild;
-    return { entryInIndex, div };
-}
+let mapDirectorItemToGenericListItem = (item, classNames) => (
+    {
+        "text": item.title,
+        "classNames": classNames
+    })
 
 function buildDirectors(data, indexData) {
-    let { entryInIndex, div } = renderDiv(data, indexData);
-    let ul = createElement('ul', '', '') |> div.appendChild;
-    renderList(data, entryInIndex.classNames, div);
+    let entryInIndex = indexData.data.find(e => e.id == data.id);
+
+    DomRenderer.renderThing({
+        "p": {
+            "text": entryInIndex.title
+        },
+        "whichPartial": () => "ul",
+        "dataForPartial": data.data.map(item => mapDirectorItemToGenericListItem(item, entryInIndex.classNames))
+    }, 'main-content-container');
 }
 
 function buildFilms(data, indexData, directorsData) {
-    let { entryInIndex, div } = renderDiv(data, indexData);
-    let table = createElement('table', '', '') |> div.appendChild;
-    let tr = createElement('tr', '', '') |> table.appendChild;
-    createElement('th', 'Title', '') |> tr.appendChild;
-    createElement('th', 'Director(s)', '') |> tr.appendChild;
-    buildTable(data, entryInIndex.classNames, table, indexData, directorsData);
-}
+    let entryInIndex = indexData.data.find(e => e.id == data.id);
 
-function renderList(json, classNames, container) {
-    let ul = createElement('ul', '', '') |> container.appendChild;
-    json.data.forEach(element => {
-        createElement('li', element.title, classNames) |> ul.appendChild;
-    });
-}
-
-function buildTable(json, classNames, container, indexData, directorsData) {
-    json.data.forEach(film => {
-        let tr = createElement('tr', '', '') |> container.appendChild;
-        createElement('td', film.title, classNames) |> tr.appendChild;
-        let directorsOfFilm = film.directors;
-        if (directorsOfFilm != undefined) {
-            let directorsEntryInIndex = indexData.data.find(e => e.id == directorsData.id);
-            let directorNames = formatDirectorsList(directorsOfFilm, directorsData);
-            createElement('td', directorNames, directorsEntryInIndex.classNames) |> tr.appendChild;
+    DomRenderer.renderThing({
+        "p": {
+            "text": entryInIndex.title
+        },
+        "whichPartial": () => "table",
+        "dataForPartial": {
+            "headerCells": [
+                { "text": "Title" },
+                { "text": "Director(s)" }
+            ],
+            "rows": mapFilms(data, entryInIndex.classNames, indexData, directorsData)
         }
-        else
-            createElement('td', '', '') |> tr.appendChild;
+    }, 'main-content-container');
+}
+
+function mapFilms(json, classNames, indexData, directorsData) {
+    return json.data.map(film => {
+        return {
+            "cells": [
+                {
+                    "text": film.title,
+                    "classNames": classNames
+                },
+                mapDirectorsCell(film, indexData, directorsData)
+            ]
+        }
     });
+}
+
+function mapDirectorsCell(film, indexData, directorsData) {
+    let directorsCell = {}
+    let directorsOfFilm = film.directors;
+    if (directorsOfFilm != undefined) {
+        let directorsEntryInIndex = indexData.data.find(e => e.id == directorsData.id);
+        let directorNames = formatDirectorsList(directorsOfFilm, directorsData);
+        directorsCell.text = directorNames;
+        directorsCell.classNames = directorsEntryInIndex.classNames;
+    }
+    return directorsCell;
 }
 
 // directorsOfFilm contains IDs to objects in directorsData

@@ -1,15 +1,30 @@
+class DomRenderer {
+    static renderThing(data, containerOrContainerId){
+        this.renderHbsTemplate(data, containerOrContainerId, 'thing');
+    }
 
-// items should have props: text, classNames
-function renderItems(items, elementName, containerId) {
-    let container = document.getElementById(containerId);
-    items.forEach(item => {
-        createElement(elementName, item.text, item.classNames) |> container.appendChild;
-    });
-}
+    static renderUl(data, containerOrContainerId) {
+        this.renderHbsTemplate(data, containerOrContainerId, 'ul');
+    }
 
-function createElement(elementName, text, classNames) {
-    let el = document.createElement(elementName);
-    el.innerText = text;
-    el.className = classNames;
-    return el;
+    static renderP(data, containerOrContainerId) {
+        this.renderHbsTemplate(data, containerOrContainerId, 'p');
+    }
+
+    static renderTable(data, containerOrContainerId) {
+        this.renderHbsTemplate(data, containerOrContainerId, 'table');
+    }
+
+    static renderHbsTemplate(data, containerOrContainerId, templateName) {
+        const renderedHtml = Handlebars.templates[templateName](data);
+        this.resolveContainer(containerOrContainerId).innerHTML += renderedHtml;
+    }
+
+    static resolveContainer(containerOrContainerId) {
+        if (containerOrContainerId instanceof Element)
+            return containerOrContainerId;
+        if (typeof (containerOrContainerId) == 'string')
+            return document.getElementById(containerOrContainerId);
+        return undefined;
+    }
 }

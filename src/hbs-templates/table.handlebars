@@ -1,0 +1,23 @@
+<table>
+    <thead>
+        <tr>
+            {{#each headerCells}}
+            <th>{{this.text}}</th>
+            {{/each}}
+        </tr>
+    </thead>
+
+    <body>
+        {{#each rows}}
+        <tr>
+            {{#each cells}}
+            <td {{#if this.classNames}}class="{{this.classNames}}" {{/if}}>
+                {{this.text}}
+            </td>
+            {{/each}}
+        </tr>
+        {{/each}}
+    </body>
+
+    <tfoot></tfoot>
+</table>

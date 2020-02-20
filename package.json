@@ -19,6 +19,7 @@
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.4",
-    "@babel/plugin-proposal-pipeline-operator": "^7.8.3"
+    "@babel/plugin-proposal-pipeline-operator": "^7.8.3",
+    "handlebars": "^4.7.3"
   }
 }
